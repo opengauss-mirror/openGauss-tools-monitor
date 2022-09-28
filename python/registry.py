@@ -1,3 +1,12 @@
+"""
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+"""
+
+# -- coding: utf8 --
 from abc import ABC, abstractmethod
 import copy
 from threading import Lock
@@ -40,9 +49,9 @@ class CollectorRegistry(Collector):
             names = self._get_names(collector)
             duplicates = set(self._names_to_collectors).intersection(names)
             if duplicates:
-            #    raise ValueError(
-            #        'Duplicated timeseries in CollectorRegistry: {}'.format(
-            #            duplicates))
+                # raise ValueError(
+                #     'Duplicated timeseries in CollectorRegistry: {}'.format(
+                #         duplicates))
                 pass
             for name in names:
                 self._names_to_collectors[name] = collector

@@ -6,11 +6,16 @@ cd ${local_path}
 if [ -d "flaskProject" ];then
   rm -rf flaskProject
 fi
+
+
 mkdir flaskProject
 mkdir -p flaskProject/templates
 mkdir -p flaskProject/static
 mkdir -p flaskProject/config
-mkdir -p flaskProject/prometheus_client
+
+pip install --target=./flaskProject prometheus_client
+rm -f ./flaskProject/prometheus_client/registry.py
+\cp -rf ./python/registry.py ./flaskProject/prometheus_client/
 
 if [ -f "openGauss-3.0.0-JDBC.tar.gz" ]; then
   tar -xvf openGauss-3.0.0-JDBC.tar.gz -C flaskProject
@@ -31,4 +36,3 @@ touch ${local_path}/flaskProject/config/check_config.yml
 touch ${local_path}/flaskProject/config/db_config.yml
 touch ${local_path}/flaskProject/config/re_config.yml
 cd ${local_path}
-\cp -rf thirdFile/prometheus_client/*  flaskProject/prometheus_client
