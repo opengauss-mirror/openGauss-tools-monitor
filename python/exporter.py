@@ -13,7 +13,7 @@
  * See the Mulan PSL v2 for more details.
 """
 
-# -*-coding:utf-8 -*-
+# -- coding: utf8 --
 from prometheus_client import Gauge, start_http_server
 import time
 import datetime
