@@ -102,7 +102,7 @@ def get_metrics_info(curs, sqlStr, lab_dict, time_sleep):
                 type(sql_value[0][i])) == "<java class 'java.lang.Short'>" or str(
                 type(sql_value[0][i])) == "<java class 'java.lang.Integer'>" or str(
                 type(sql_value[0][i])) == "<java class 'java.lang.Float'>" or str(
-                type(sql_value[0][i])) == "<java class 'JDouble'>" or sql_value[0][i].isdecimal() == True:
+                type(sql_value[0][i])) == "<java class 'JDouble'>" :
                 gauge_list.append(i)
             else:
                 label_list.append(i)
