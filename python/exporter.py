@@ -1,4 +1,4 @@
-# -*-coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 """
  * Copyright (c) 2020 Huawei Technologies Co.,Ltd.
  *
