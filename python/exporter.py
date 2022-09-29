@@ -1,3 +1,4 @@
+# -*-coding:utf-8 -*-
 """
  * Copyright (c) 2020 Huawei Technologies Co.,Ltd.
  *
@@ -13,7 +14,6 @@
  * See the Mulan PSL v2 for more details.
 """
 
-# -- coding: utf8 --
 from prometheus_client import Gauge, start_http_server
 import time
 import datetime

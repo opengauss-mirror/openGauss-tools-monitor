@@ -1,3 +1,4 @@
+# -*-coding:utf-8 -*-
 """
                                  Apache License
                            Version 2.0, January 2004
@@ -6,7 +7,6 @@
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 """
 
-# -- coding: utf8 --
 from abc import ABC, abstractmethod
 import copy
 from threading import Lock
