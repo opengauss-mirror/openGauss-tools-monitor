@@ -205,7 +205,7 @@ start.sh                 // linux启动脚本
 
 <table>
     <tr>
-        <td><img src="https://gitee.com/jun-peng-liu/gauss/raw/master/img/yanshi.jpg"/></td>
+        <td><img src="https://gitee.com/jun-peng-liu/gauss/raw/master/img/yanshi03.png"/></td>
         <td><img src="https://gitee.com/jun-peng-liu/gauss/raw/master/img/yanshi2.jpg"/></td>
     </tr>
 </table>
