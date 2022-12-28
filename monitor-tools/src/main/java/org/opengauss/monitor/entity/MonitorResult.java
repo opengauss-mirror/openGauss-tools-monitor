@@ -4,7 +4,7 @@
 
 package org.opengauss.monitor.entity;
 
-import org.opengauss.monitor.common.contant.HttpStatus;
+import cn.hutool.http.HttpStatus;
 import org.opengauss.monitor.util.StringUtils;
 
 import java.util.HashMap;
@@ -100,7 +100,7 @@ public class MonitorResult extends HashMap<String, Object> {
      * @return 成功消息
      */
     public static MonitorResult success(String msg, Object data) {
-        return new MonitorResult(HttpStatus.SUCCESS, msg, data);
+        return new MonitorResult(HttpStatus.HTTP_OK, msg, data);
     }
 
     /**
@@ -130,7 +130,7 @@ public class MonitorResult extends HashMap<String, Object> {
      * @return 警告消息
      */
     public static MonitorResult error(String msg, Object data) {
-        return new MonitorResult(HttpStatus.ERROR, msg, data);
+        return new MonitorResult(HttpStatus.HTTP_BAD_REQUEST, msg, data);
     }
 
     /**
@@ -140,7 +140,7 @@ public class MonitorResult extends HashMap<String, Object> {
      * @return MonitorResult
      */
     public static MonitorResult target(String msg) {
-        return new MonitorResult(HttpStatus.TARGET, msg);
+        return new MonitorResult(600, msg);
     }
 
     /**

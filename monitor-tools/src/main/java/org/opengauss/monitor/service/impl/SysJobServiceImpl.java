@@ -7,8 +7,8 @@ package org.opengauss.monitor.service.impl;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.http.HttpStatus;
 import org.opengauss.monitor.common.contant.ConmmonShare;
-import org.opengauss.monitor.common.contant.HttpStatus;
 import org.opengauss.monitor.common.contant.ScheduleCommon;
 import org.opengauss.monitor.config.NagiosConfig;
 import org.opengauss.monitor.entity.MFilter;
@@ -1096,7 +1096,7 @@ public class SysJobServiceImpl implements ISysJobService {
             return MonitorResult.error("请先配置Nagios配置信息");
         }
         MonitorResult MonitorResult = insertTask(task);
-        if (MonitorResult.get("code").equals(HttpStatus.SUCCESS)) {
+        if (MonitorResult.get("code").equals(HttpStatus.HTTP_OK)) {
             jobMapper.deleteJobByIds(Arrays.asList(task.getJobId()));
             insertTask(task);
         }
