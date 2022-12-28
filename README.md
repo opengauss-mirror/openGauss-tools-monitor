@@ -21,6 +21,7 @@
 
 ### openGauss数据库监控插件工具的使用限制
 
+* 支持java8版本
 * 用户需要具有数据库的操作权限,权限配置为只读权限,配置正确的数据源信息,数据库支持openGauss
 * 只支持select查询语句
 * 在Prometheus服务端需要配置exporter的信息
@@ -65,12 +66,13 @@ openGauss-tools-monitor
 
 #### 1.安装jdk
 
+* 以java8的安装为例
 * Oracle官方下载:https://www.oracle.com/java/technologies/downloads/
 * 双击打开下载好的jdk,点击下一步,安装完成后进行java环境变量的配置
 * 右键我的电脑,点击属性,点击高级系统设置,点击环境变量。
 * 在系统变量中新建JAVA_HONE,变量值为java的安装路径
 * 在path写入bin所在的路径,如图所示;
-* 打开cmd命令执行java -version,结果为java version "java版本号",安装成功。
+* 打开cmd命令执行java -version,结果为java version "java版本号",安装成功。(java version "1.8.0_341")
 
 <table>
     <tr>
