@@ -1,0 +1,184 @@
+/* App.vue */
+#app {
+    font-family: 'Arial', 'Helvetica', 'Avenir', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+  }
+/* configurationCenter.vue */
+.el-form-item__label {
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+}
+.el-input__inner{
+    height: 40px;
+    line-height: 40px;
+}
+.el-input__wrapper{
+    padding: 0px 15px;
+}
+.el-tabs__content{
+    overflow-y: auto;
+    height: calc(100% - 64px);
+}
+.el-tabs{
+    height: 100%;
+}
+.wrap{
+    height: 100%;
+}
+#right{
+    flex: 1;
+    height: 100%;
+}
+.el-row{
+    height: 100%;
+}
+.left {
+    padding-right: 8%;
+    width: 42%;
+    height: 100%;
+}
+.right {
+    padding-right: 8%;
+    flex: 1;
+    height: 100%;
+}
+.parent {
+    display: flex;
+}
+/* exporterConfiguration.vue */
+body,html {
+    margin:0;
+    padding:0;
+}
+.el-menu-item:focus{
+    background-color: var(--el-menu-hover-bg-color);
+}
+.indexClass .el-dialog__body{
+    padding: 0px 20px;
+}
+#header{
+    height: auto;
+    flex-shrink: 0;
+}
+#layout-body{
+    flex-grow: 2;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.el-card__body, .el-main {
+    padding: 12px 18px 12px 8px !important;
+    text-align: left;
+    background-color: #F4F4F4;
+}
+.el-tabs__nav-wrap::after {
+    height: 0px !important;
+}
+.el-tabs__header {
+    position: relative;
+    margin: 0 0px 24px !important;
+}
+.el-tabs__item {
+    font-size: 16px !important;
+    padding: 0 16px !important;
+}
+.el-tabs__content{
+    overflow-y: auto !important;
+    height: calc(100% - 64px) !important;
+}
+.el-tabs{
+    height: 100% !important;
+}
+/* fileGeneration.vue */
+.el-form-item {
+    margin-bottom: 16px;
+}
+.el-table .success-row {
+    background: #f0f9eb;
+}
+#main .el-form-item__label{
+    padding: 0px 24px 0 0;
+}
+.el-form-item__label-wrap{
+    margin-left: 0px !important;
+}
+.el-radio-button__inner {
+    background-color: #f2f2f2;
+    padding: 12px 20px;
+}
+.el-radio-button__original-radio:checked+.el-radio-button__inner {
+    color: #409eff;
+    background-color: #FFF;
+    border-radius: 6px;
+}
+#indexId .el-table__body-wrapper { 
+    overflow-y: auto;
+}
+.el-popper:focus {
+    outline: none !important;
+}
+.el-table .cell{
+    padding: 0 10px;
+}
+.el-button.is-link{
+    padding: 9px 0px;
+}
+#footer{
+    flex-shrink: 0;
+    text-align: center;
+    margin-top: 16px;
+}
+#main{
+    flex-grow: 2;
+}
+.layout{
+    height: 100%;
+}
+/* IndexRelease.vue */
+.el-form-item {
+    margin-bottom: 16px;
+}
+.el-table .success-row {
+    background: #f0f9eb;
+}
+.el-form-item__label-wrap{
+    margin-left: 0px !important;
+}
+.el-radio-button__inner {
+    background-color: #f2f2f2;
+}
+.el-table__column-filter-trigger {
+    line-height: 23px;
+}
+.indexClass .el-table__body-wrapper { 
+    max-height:calc(100vh - 520px);
+    overflow-y: auto;
+} 
+.el-table__body-wrapper { 
+    overflow-y: auto;
+}
+.el-button.is-link{
+    padding: 9px 0px;
+}
+.el-popper:focus {
+    outline: none !important;
+}
+#layoutCss{
+    height: calc(100% - 98px);
+    overflow-y: auto;
+}
+.dataStyle{
+    font-size: 20px;
+    display: block;
+    margin-bottom: 16px;
+}
+.el-table--enable-row-hover .el-table__body tr:hover>td{
+    background: #f4f4f4 !important;
+}
+.el-table th.el-table__cell{
+    background-color: #f4f4f4 !important;
+    color: #1c1c1c !important;
+}
