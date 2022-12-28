@@ -88,11 +88,9 @@ public class SysConfigMapper {
     public SysConfig getConfigByid(Long id) {
         List<SysConfig> sysConfigList = getAllConfig();
         SysConfig config = null;
-        if (CollectionUtil.isNotEmpty(sysConfigList)) {
-            config = sysConfigList.stream()
-                    .filter(s -> Objects.equals(s.getDataSourceId(), id))
-                    .findFirst().orElse(null);
-        }
+        config = sysConfigList.stream()
+                .filter(s -> Objects.equals(s.getDataSourceId(), id))
+                .findFirst().orElse(null);
         return config;
     }
 
@@ -124,17 +122,10 @@ public class SysConfigMapper {
      */
     public SysConfig getNagiosConfig() {
         List<SysConfig> sysConfigList = getAllConfig();
-        List<SysConfig> nagios = new ArrayList<>();
         SysConfig config = null;
         if (CollectionUtil.isNotEmpty(sysConfigList)) {
-            nagios = sysConfigList.stream()
-                    .filter(item -> item.getPlatform().equals(ConmmonShare.NAGIOS))
-                    .collect(Collectors.toList());
-        }
-        if (CollectionUtil.isNotEmpty(nagios)) {
-            config = nagios.get(0);
-            config.setClientPassword(Base64.decode(config.getClientPassword()));
-            config.setServerPassword(Base64.decode(config.getServerPassword()));
+            config = sysConfigList.stream()
+                    .filter(item -> item.getPlatform().equals(ConmmonShare.NAGIOS)).findFirst().orElse(null);
         }
         return config;
     }
@@ -146,11 +137,11 @@ public class SysConfigMapper {
      * @return list
      */
     public List<SysConfig> getBatchById(List<Long> ids) {
-        List<SysConfig> sysConfigList = getAllConfig();
         List<SysConfig> result = new ArrayList<>();
         if (CollectionUtil.isEmpty(ids)) {
             return result;
         }
+        List<SysConfig> sysConfigList = getAllConfig();
         for (Long id : ids) {
             for (SysConfig sysConfig : sysConfigList) {
                 if (id.equals(sysConfig.getDataSourceId())) {
@@ -347,19 +338,24 @@ public class SysConfigMapper {
     }
 
     private String checkConfig(SysConfig sysConfig, List<SysConfig> sysConfigList) {
-        List<String> connectName = sysConfigList.stream()
-                .filter(item -> item.getPlatform().equals(ConmmonShare.PROM)).map(SysConfig::getConnectName)
-                .collect(Collectors.toList());
-        List<String> ips = sysConfigList.stream()
-                .filter(item -> item.getPlatform().equals(ConmmonShare.PROM)).map(SysConfig::getIp)
-                .collect(Collectors.toList());
         if (sysConfig.getPlatform().equals(ConmmonShare.ZABBIX)) {
             return "";
         }
-        String name = connectName.stream()
-                .filter(itme -> itme.equals(sysConfig.getConnectName()))
-                .findFirst().orElse(null);
-        String ip = ips.stream().filter(itme -> itme.equals(sysConfig.getIp())).findFirst().orElse(null);
+        String name = null;
+        String ip = null;
+        if (CollectionUtil.isEmpty(sysConfigList)) {
+            return "";
+        }
+        for (SysConfig config : sysConfigList) {
+            if (config.getPlatform().equals(ConmmonShare.PROM)) {
+                if (config.getConnectName().equals(sysConfig.getConnectName())) {
+                    name = config.getConnectName();
+                }
+                if (config.getIp().equals(sysConfig.getIp())) {
+                    ip = config.getIp();
+                }
+            }
+        }
         if (ObjectUtil.isNotEmpty(name)) {
             return "实例名称不能重复";
         }
@@ -407,7 +403,7 @@ public class SysConfigMapper {
                 }
             }
         }
-        Boolean isFlag = sysConfigs.removeAll(result);
+        sysConfigs.removeAll(result);
         JsonConfig jsonConfig = new JsonConfig();
         jsonConfig.setSysConfigs(sysConfigs);
         JsonUtilData.objectToJsonFile(FileConfig.getDataSourceConfig(), jsonConfig);

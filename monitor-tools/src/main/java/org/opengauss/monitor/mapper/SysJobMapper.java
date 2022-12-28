@@ -111,12 +111,13 @@ public class SysJobMapper {
         AssertUtil.isTrue(CollectionUtil.isEmpty(sysJobs), "没有定时任务");
         SysJob sysJob = sysJobs.stream()
                 .filter(item -> ObjectUtil.isNotEmpty(item) && item.getJobId().equals(job.getJobId()))
-                .findFirst()
-                .orElse(null);
-        AssertUtil.isTrue(sysJob == null, "定时任务不存在");
-        for (int i = 0; i < sysJobs.size(); i++) {
-            if (sysJobs.get(i).getJobId().equals(job.getJobId())) {
-                sysJobs.get(i).setStatus(job.getStatus());
+                .findFirst().orElse(null);
+        if (sysJob == null) {
+            return 0;
+        }
+        for (SysJob item : sysJobs) {
+            if (item.getJobId().equals(job.getJobId())) {
+                item.setStatus(job.getStatus());
             }
         }
         JsonTask jsonTask = new JsonTask();
@@ -150,10 +151,8 @@ public class SysJobMapper {
         if (CollectionUtil.isEmpty(sysJobs)) {
             return new ArrayList<>();
         }
-        List<String> list = sysJobs.stream().map(SysJob::getTargetGroup).distinct().collect(Collectors.toList());
-        if (CollectionUtil.isNotEmpty(list)) {
-            list.remove(ConmmonShare.SYSTEMTARGET);
-        }
+        List<String> list = sysJobs.stream().filter(item -> !item.getTargetGroup().equals(ConmmonShare.SYSTEMTARGET))
+                .map(SysJob::getTargetGroup).distinct().collect(Collectors.toList());
         return list;
     }
 }
