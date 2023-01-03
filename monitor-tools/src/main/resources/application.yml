@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: monitor-tools
+  main:
+    allow-circular-references: true
+  jackson:
+    time-zone: GMT+8
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+  port: 8085
+management:
+  endpoints:
+    # 关闭所有的检查项
+    enabled-by-default: false
+    web:
+      exposure:
+        # 暴露监控接口，*为全部接口
+        include: 'prometheus'
+      ## 省掉了/actuator前缀
+      base-path: "/"
+  # 对外暴露prometheus接口并显示更多健康信息
+  endpoint:
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+  ## 关闭内置的检查项
+  metrics:
+    enable:
+      jvm: false
+      logback: false
+      files: false
+      tomcat: false
+      executor: false
+      disk: false
+      uptime: false
+      integration: false
+
+swagger:
+  # 是否启用
+  enable: true
+  base:
+    # 扫描的包，多个包使用逗号隔开
+    package: com.tools.monitor
+  contact:
+    email: swagger.com
+    name: JAVAFENG
+    url: https://www.swagger.com
+  description:
+  title: ${spring.application.name} API Document
+  url: https://www.swagger.com
+  version: @project.version@
+
+postgresql:
+  prefix: jdbc:postgresql://
+  suffix: /postgres
+  driver: org.postgresql.Driver
+mysql:
+  prefix: jdbc:mysql://
+  suffix: ?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+  driver: com.mysql.cj.jdbc.Driver
+  timeout: 3
+nagios:
+  delayTime: 15000
+
+file:
+  dataSourceConfig: config.json
+  relationConfig: relation.json
+  taskConfig: task.json
+
+date.pattern: yyyy-MM-dd HH:mm
