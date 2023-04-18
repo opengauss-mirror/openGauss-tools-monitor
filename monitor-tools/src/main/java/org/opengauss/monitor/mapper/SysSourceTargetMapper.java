@@ -62,7 +62,7 @@ public class SysSourceTargetMapper {
         List<Long> jobIds = new ArrayList<>();
         if (CollectionUtil.isNotEmpty(list)) {
             for (SysSourceTarget sysSourceTarget : list) {
-                if (ObjectUtil.isNotEmpty(sysSourceTarget) & CollectionUtil.isNotEmpty(sysSourceTarget.getJobIds())) {
+                if (ObjectUtil.isNotEmpty(sysSourceTarget) && CollectionUtil.isNotEmpty(sysSourceTarget.getJobIds())) {
                     jobIds.addAll(sysSourceTarget.getJobIds());
                 }
             }
