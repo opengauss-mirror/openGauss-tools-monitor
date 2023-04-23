@@ -25,7 +25,7 @@
 * 用户需要具有数据库的操作权限,权限配置为只读权限,配置正确的数据源信息,数据库支持openGauss
 * 只支持select查询语句
 * 在Prometheus服务端需要配置exporter的信息
-* 使用Zabbix监控平台需要配置Zabbix监控平台的数据库连接信息
+* 使用Zabbix监控平台需要配置Zabbix监控平台的数据库连接信息,Zabbix数据存储库为mysql
 * 使用Nagios监控平台需要配置Nagios客户端和服务端连接信息
 * 本项目部署环境需要和监控平台在同一个网段,网络互通,网络中断导致指标发布失败
 * 系统支持windows、linux
